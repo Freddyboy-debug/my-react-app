@@ -1,5 +1,5 @@
 
-
+import { useState } from "react";
 
 function MyForm() {
   const [inputs, setInputs] = useState({});
