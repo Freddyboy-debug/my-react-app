@@ -1,32 +1,24 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom/client';
-// import './my-sass.scss';
-
-// const Header = () => {
-//   return (
-//     <>
-//       <h1>Hello Style!</h1>
-//       <p>Add a little style!.</p>
-//     </>
-//   );
-// }
-
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(<Header />);
-import { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import Blogs from "./pages/Blogs";
+import Contact from "./pages/Contact";
+import NoPage from "./pages/NoPage";
+import Navbar from "./pages/Navbar";
 
-function Timer() {
-    const [count, setCount] = useState(100);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setCount((count) => count - 1);
-        }, 1000);
-    });
-
-    return <h1>I have rendered {count} times!</h1>;
+export default function App() {
+    return (
+        <BrowserRouter>
+        <Navbar/>
+            <Routes>
+                <Route index element={<Contact />} />
+                <Route path="blogs" element={<Blogs />} />
+                <Route path="home" element={<Home />} />
+                <Route path="*" element={<NoPage />} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Timer />);
+root.render(<App />);
